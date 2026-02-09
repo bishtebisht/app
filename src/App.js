@@ -14,21 +14,52 @@ import './App.css';
 
 //COMPONENTS
 
-const Person = ()=>{
-  return(
-    <>
-      <h2>This is a functional component</h2>
-      <h2>Name: Bhoomi</h2>
-    </>
-  )
-}
-const App = ()=>{
-  return(
-    <div className="App">
-      <h1>Welcome to React</h1>
-      <Person/>
-    </div>
-  )
+// const Person = ()=>{
+//   return(
+//     <>
+//       <h2>This is a functional component</h2>
+//       <h2>Name: Bhoomi</h2>
+//     </>
+//   )
+// }
+// const App = ()=>{
+//   return(
+//     <div className="App">
+//       <h1>Welcome to React</h1>
+//       <Person/>
+//     </div>
+//   )
+// }
+
+// export default App;
+
+
+function Item({ name, isPacked }) {
+  return (
+    <li className="item">
+      {name} {isPacked && '✅'}
+    </li>
+  );
 }
 
-export default App;
+export default function PackingList() {
+  return (
+    <section>
+      <h1>Sally Ride's Packing List</h1>
+      <ul>
+        <Item
+          isPacked={true}
+          name="Space suit"
+        />
+        <Item
+          isPacked={true}
+          name="Helmet with a golden leaf"
+        />
+        <Item
+          isPacked={false}
+          name="Photo of Tam"
+        />
+      </ul>
+    </section>
+  );
+}
