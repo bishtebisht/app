@@ -34,32 +34,55 @@ import './App.css';
 // export default App;
 
 
-function Item({ name, isPacked }) {
-  return (
-    <li className="item">
-      {name} {isPacked && '✅'}
-    </li>
+
+//props
+// const Person = (props)=>{
+//   return(
+//     <>
+//       <h2>This is a functional component</h2>
+//       <h2>Name: {props.name}</h2>
+//       <h2>Age: {props.age}</h2>
+//     </>
+//   )
+// }
+// const App = ()=>{
+//   return(
+//     <div className="App">
+//       <h1>Welcome to React</h1>
+//       <Person name={"Bhoomi"} age={19} />
+//       <Person name="Bhoomi" age={19} />
+//       <Person name={"John"} age={30} />
+//     </div>
+//   )
+// }
+
+// export default App;
+
+import { useState,useEffect} from 'react';
+
+const App = ()=>{
+  const [count, setCount] = useState(0);
+  //never mutate the state manually, always use the setState function to update the state
+
+  // useEffect(()=>{
+  //   setCount(50);
+  // },[]); 
+  //indipendency array
+  // if we want to run the useEffect only once when the component mounts, we can pass an empty array as the second argument to useEffect
+ 
+  useEffect(()=>{
+    alert("Count has been updated to: "+ count);
+  },[count]); 
+  //dependency array
+  // if we want to run the useEffect every time the count state changes, we can pass the count state as a dependency in the array
+
+  return(
+    <div className="App">
+      <button onClick={() => setCount(count - 1)}>-</button>
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count + 1)}>+</button>
+    </div>
   );
 }
 
-export default function PackingList() {
-  return (
-    <section>
-      <h1>Sally Ride's Packing List</h1>
-      <ul>
-        <Item
-          isPacked={true}
-          name="Space suit"
-        />
-        <Item
-          isPacked={true}
-          name="Helmet with a golden leaf"
-        />
-        <Item
-          isPacked={false}
-          name="Photo of Tam"
-        />
-      </ul>
-    </section>
-  );
-}
+export default App;
